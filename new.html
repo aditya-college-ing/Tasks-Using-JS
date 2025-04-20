@@ -8,13 +8,14 @@
     <link href="/new.css" rel="stylesheet">
 </head>
 <body>
-   <button onclick="showData()">Show Users Data</button>
-   <div id="userTable"></div>
+   
+ 
 
-   <div  onclick="showuser()"   class="popup" data-id="1" style="display: block; border: 2px solid antiquewhite; padding-left: 10px; width: 230px; cursor: pointer;">
-    <h4>Name = Leanne Graham</h4>
-    <h4>Email = Sincere@april.biz</h4>
-   </div><br>
+   <div class="popup" data-id="1" style="display: block; border: 2px solid antiquewhite; padding-left: 10px; width: 230px; cursor: pointer;">
+      <h4>Name = Leanne Graham</h4>
+      <h4>Email = Sincere@april.biz</h4>
+    </div>
+    <br>
    <div class="popup" data-id="2" style="display: block; border: 2px solid antiquewhite; padding-left: 10px; width: 230px; cursor: pointer;">
     <h4>Name = Ervin Howell</h4>
     <h4>Email = Shanna@melissa.tv</h4>
@@ -36,18 +37,18 @@
         <h4>Email: Nathan@yesenia.net</h4>
      </div><br>
 
-    <div id="userDataModal" class="modal">
-     <div class="modal-content">
-       <span class="close-btn" onclick="closeModal()">&times;</span>
-       <h2 id="modal-name"></h2>
-       <h3 id="modal-email"></h3>
-       <h3 id="modal-phone"></h3>
-       <h3 id="modal-address"></h3>
-       <h3 id="modal-company"></h3>
-       <h3 id="modal-website"></h3>
-     </div>
-   </div>
-
+     <div id="userDataModal" class="modal" style="display: none;">
+      <div id="modal-content" class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h2 id="modal-name"></h2>
+        <h3 id="modal-email"></h3>
+        <h3 id="modal-phone"></h3>
+        <h3 id="modal-address"></h3>
+        <h3 id="modal-company"></h3>
+        <h3 id="modal-website"></h3>
+      </div>
+    </div>
+    
    <script src="/new.js"></script>
 </body>
 </html>

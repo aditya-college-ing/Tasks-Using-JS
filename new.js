@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
-  showData();
+  setupPopups();
 });
 
-function showData() {
+function setupPopups() {
   const popups = document.querySelectorAll('.popup');
 
   popups.forEach(popup => {
@@ -14,7 +14,10 @@ function showData() {
       }
 
       fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
-        .then(response => response.json())
+        .then(response => {
+          if (!response.ok) throw new Error("Network response was not ok.");
+          return response.json();
+        })
         .then(data => {
           const modal = document.getElementById('userDataModal');
           document.getElementById('modal-name').textContent = "Name: " + data.name;
@@ -24,7 +27,7 @@ function showData() {
           document.getElementById('modal-company').textContent = "Company: " + data.company.name;
           document.getElementById('modal-website').textContent = "Website: " + data.website;
 
-          modal.style.display = "flex"; 
+          modal.style.display = "flex";
         })
         .catch(error => {
           console.error("Error fetching user data:", error);
@@ -35,10 +38,9 @@ function showData() {
 
 function closeModal() {
   const modal = document.getElementById('userDataModal');
-  modal.style.display = "none"; 
+  modal.style.display = "none";
 }
 
-// Close modal when clicking outside of it
 window.onclick = function(event) {
   const modal = document.getElementById('userDataModal');
   if (event.target === modal) {
@@ -46,7 +48,9 @@ window.onclick = function(event) {
   }
 };
 
-// Prevent closing modal when clicking inside content
-document.getElementById('modal-content').addEventListener('click', function (event) {
-  event.stopPropagation();
-});
+const modalContent = document.getElementById('modal-content');
+if (modalContent) {
+  modalContent.addEventListener('click', function (event) {
+    event.stopPropagation();
+  });
+}
